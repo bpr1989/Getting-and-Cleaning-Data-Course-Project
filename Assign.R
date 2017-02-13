@@ -58,8 +58,9 @@ names(Data_final) <- gsub('^f',"FrequencyDomain",names(Data_final))
 Data_final1 <- Data_final[,c(81,1,82,2:80)]
 
 #Preparing a tidy data set
-summarise(Data_final1,mean)
+Data_final2 <- aggregate(.~ Participant + ActivityName,data=Data_final1,mean)
 
+write.table(Data_final2,file="FinalTidySet.txt",row.names = FALSE )
 
 
 
